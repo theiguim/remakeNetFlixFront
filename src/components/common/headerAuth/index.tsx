@@ -11,7 +11,6 @@ const HeaderAuth = () => {
 
     const router = useRouter()
     const [modalOpen, setModalOpen] = useState(false);
-
     const handleOpenModal = () => {
         setModalOpen(true)
     }
