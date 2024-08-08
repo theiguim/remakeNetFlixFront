@@ -9,7 +9,7 @@ const UserForm = () => {
     const router = useRouter()
     const [color, setColor] = useState("");
     const [toastIsOpen, setToastIsOpen] = useState(false);
-    const [errorMessage, setErrorMessage] = useState("")
+    const [errorMessage, setErrorMessage] = useState("");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [phone, setPhone] = useState("");

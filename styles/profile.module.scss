@@ -1,14 +1,16 @@
 @import "./styles/colors.module.scss";
 
-.header{
+.header {
     background-color: black;
 }
-.form{
+
+.form {
     border: 1px solid $darkGray;
     padding: 20px 0px;
     max-width: 100%;
 }
-.formName{
+
+.formName {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -17,7 +19,7 @@
     text-transform: uppercase;
 }
 
-.nameAbbreviation{
+.nameAbbreviation {
     font-size: 40px;
     font-weight: bold;
     min-height: 70px;
@@ -29,46 +31,51 @@
     align-items: center;
 
 }
-.userName{
+
+.userName {
     font-size: 30px;
     font-weight: bold;
 }
 
-.memberTime{
+.memberTime {
     display: flex;
     justify-content: center;
     gap: 10px;
 }
 
-.memberTimeImg{
+.memberTimeImg {
     width: 20px;
 }
 
-.memberText{
-font-size: 14px;
-color: $lightGray;
+.memberText {
+    font-size: 14px;
+    color: $lightGray;
 }
-.label{
+
+.label {
     font-size: 14px;
     font-weight: bold;
 }
-.inputFlexDiv{
+
+.inputFlexDiv {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 50px;
 }
 
-.inputFlex{
+.inputFlex {
     width: 250px;
     background-color: transparent;
     border: 1px solid $darkGray;
     color: white;
     text-transform: uppercase;
-    &::placeholder{
+
+    &::placeholder {
         color: $lightGray;
     }
-    &:focus{
+
+    &:focus {
         box-shadow: none;
         border-color: $lightRed;
         color: white;
@@ -76,23 +83,26 @@ color: $lightGray;
     }
 }
 
-.inputNormalDiv{
-display: flex;
-flex-direction: column;
-align-items: center;
-margin-top: 20px;
-gap: 20px;
+.inputNormalDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    gap: 20px;
 }
-.input{
+
+.input {
     @extend .inputFlex;
     text-transform: lowercase;
     width: 550px;
 }
-.btnColumn{
-   padding-right: 60px;
+
+.btnColumn {
+    padding-right: 60px;
 }
 
-.formBtn{
+.formBtn {
+    
     border-color: $lightRed;
     text-align: center;
     color: white;
@@ -100,20 +110,23 @@ gap: 20px;
     font-size: 15px;
     padding: 6px 20px;
     transition: 0.3s;
+    display: block;
+    margin: 10px auto;
 
-    &:hover{
+    &:hover {
         border-color: $darkRed;
         background-color: transparent;
         color: $lightGray;
     }
 }
 
-.title{
+.title {
     font-size: 45px;
     font-weight: bold;
     padding-bottom: 50px;
 }
-.renderForm{
+
+.renderForm {
     display: block;
     width: 200px;
     border: 1px solid $darkGray;
@@ -123,61 +136,77 @@ gap: 20px;
     padding: 14px 0;
     transition: 0.3s;
 
-    &:hover{
+    &:hover {
         background-color: transparent;
-        border-color: $lightRed;
-        color: $lightGray;
+        color: $lightRed;
+        // border-color: $lightRed;
+    }
+    &:active {
+        background-color: transparent;
+        box-shadow: none;
+    }
+    &:focus{
+        background-color: transparent;
+        box-shadow: none;
     }
 }
-.footer{
+
+.footer {
     background-color: black;
 }
 
-@media(max-width: 991px){
-    .title{
+@media(max-width: 991px) {
+    .title {
         text-align: center;
     }
-    .btnColumn{
+
+    .btnColumn {
         width: 100%;
         margin-bottom: 40px;
         padding-right: 0px;
     }
 }
 
-@media(max-width: 767px){
-    .inputFlexDiv{
+@media(max-width: 767px) {
+    .inputFlexDiv {
         gap: 30px;
     }
-    .inputFlex{
-       width: 400px;
+
+    .inputFlex {
+        width: 400px;
     }
-    .input{
-    width: 400px;
+
+    .input {
+        width: 400px;
     }
 }
 
 @media (max-width: 527px) {
-  .title {
-    font-size: 35px;
-  }
-  .formName {
-    width: 95%;
-  }
-  .nameAbbreviation {
-    font-size: 30px;
-    min-width: 60px;
-    min-height: 60px;
-  }
-  .userName {
-    font-size: 30px;
-  }
+    .title {
+        font-size: 35px;
+    }
+
+    .formName {
+        width: 95%;
+    }
+
+    .nameAbbreviation {
+        font-size: 30px;
+        min-width: 60px;
+        min-height: 60px;
+    }
+
+    .userName {
+        font-size: 30px;
+    }
 }
 
 @media (max-width: 435px) {
-  .inputFlex {
-    width: 100%;
-  }
-  .input {
-    width: 100%;
-  }
+    .inputFlex {
+        width: 100%;
+    }
+
+    .input {
+        width: 100%;
+    }
 }
