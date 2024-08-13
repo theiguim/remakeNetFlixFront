@@ -18,18 +18,13 @@ const CoursePage = function () {
     const router = useRouter();
     const { id } = router.query;
 
-
-    useEffect(()=>{
-        if(!sessionStorage.getItem("onebitflix-token")){
+    useEffect(() => {
+        if (!sessionStorage.getItem("onebitflix-token")) {
             router.push("/login")
-        }else{
+        } else {
             setLoading(false)
         }
-    },[]);
-
-    if(loading){
-        return <PageSpinner />
-    }
+    }, []);
 
     const getCourse = async function () {
         if (typeof id !== "string") return;
@@ -72,7 +67,13 @@ const CoursePage = function () {
     }
 
     if (course === undefined) return <PageSpinner />
-    
+
+
+
+    if (loading) {
+        return <PageSpinner />
+    }
+
     return (
         <>
             <Head>
@@ -139,11 +140,11 @@ const CoursePage = function () {
                         <p><strong>Não temos episódios ainda, volte outra hora! &#x1F606;</strong></p>
                     ) : (
                         course?.episodes?.map((episode) => (
-                            <EpisodeList key={episode.id} episode={episode} course={course}/>
+                            <EpisodeList key={episode.id} episode={episode} course={course} />
                         ))
                     )}
                 </Container>
-                    <Footer />
+                <Footer />
             </main>
         </>
     );

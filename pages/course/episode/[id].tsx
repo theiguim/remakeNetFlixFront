@@ -23,17 +23,15 @@ const EpisodePlayer = function () {
 
     const playerRef = useRef<ReactPlayer>(null);
 
-    useEffect(()=>{
-        if(!sessionStorage.getItem("onebitflix-token")){
+    useEffect(() => {
+        if (!sessionStorage.getItem("onebitflix-token")) {
             router.push("/login")
-        }else{
+        } else {
             setLoading(false)
         }
-    },[]);
+    }, []);
 
-    if(loading){
-        return <PageSpinner />
-    }
+
 
     const handleGetEpisodeTime = async () => {
         const res = await watchEpisodeService.getWatchTime(episodeId);
@@ -95,6 +93,9 @@ const EpisodePlayer = function () {
         }
     }
 
+    if (loading) {
+        return <PageSpinner />
+    }
     return (
         <>
             <Head>
