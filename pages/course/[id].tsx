@@ -11,11 +11,25 @@ import Footer from "../../src/components/common/footer";
 
 const CoursePage = function () {
 
+    const [loading, setLoading] = useState(true);
     const [course, setCourse] = useState<CourseType>();
     const [liked, setLiked] = useState(false);
     const [favorited, setFavorited] = useState(false);
     const router = useRouter();
     const { id } = router.query;
+
+
+    useEffect(()=>{
+        if(!sessionStorage.getItem("onebitflix-token")){
+            router.push("/login")
+        }else{
+            setLoading(false)
+        }
+    },[]);
+
+    if(loading){
+        return <PageSpinner />
+    }
 
     const getCourse = async function () {
         if (typeof id !== "string") return;
@@ -58,7 +72,7 @@ const CoursePage = function () {
     }
 
     if (course === undefined) return <PageSpinner />
-
+    
     return (
         <>
             <Head>
@@ -125,7 +139,7 @@ const CoursePage = function () {
                         <p><strong>Não temos episódios ainda, volte outra hora! &#x1F606;</strong></p>
                     ) : (
                         course?.episodes?.map((episode) => (
-                            <EpisodeList key={episode.id} episode={episode} />
+                            <EpisodeList key={episode.id} episode={episode} course={course}/>
                         ))
                     )}
                 </Container>

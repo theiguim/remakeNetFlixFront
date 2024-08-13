@@ -4,12 +4,28 @@ import UserForm from "../src/components/profile/user";
 import styles from "../styles/profile.module.scss";
 import Head from "next/head";
 import Footer from "../src/components/common/footer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PasswordForm from "../src/components/profile/password";
+import { useRouter } from "next/router";
+import PageSpinner from "../src/components/common/spinner";
 
 const UserInfo = () => {
 
     const [form, setForm] = useState("userForm")
+    const router = useRouter();
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        if (!sessionStorage.getItem("onebitflix-token")) {
+            router.push("/login")
+        } else {
+            setLoading(false)
+        }
+    }, []);
+
+    if (loading) {
+        return <PageSpinner />
+    }
 
     return (<>
 
@@ -26,21 +42,21 @@ const UserInfo = () => {
                 <Row>
                     <Col md={4} className={styles.btnColumn}>
                         <Button
-                            className={styles.renderForm} 
-                            style={{color: form === "userForm" ? "#FF0044" : "white"}}
+                            className={styles.renderForm}
+                            style={{ color: form === "userForm" ? "#FF0044" : "white" }}
                             onClick={() => setForm("userForm")}>
                             DADOS PESSOAIS
                         </Button>
 
                         <Button
                             className={styles.renderForm}
-                            style={{color: form === "passwordForm" ? "#FF0044" : "white"}}
+                            style={{ color: form === "passwordForm" ? "#FF0044" : "white" }}
                             onClick={() => setForm("passwordForm")}>
                             SENHA
                         </Button>
                     </Col>
                     <Col md>
-                       {form === "userForm" ?  <UserForm /> : <PasswordForm />}
+                        {form === "userForm" ? <UserForm /> : <PasswordForm />}
                     </Col>
                 </Row>
 
@@ -48,9 +64,9 @@ const UserInfo = () => {
             <div className={styles.footer}>
                 <Footer />
             </div>
-           
+
         </main>
-      
+
     </>)
 
 }
